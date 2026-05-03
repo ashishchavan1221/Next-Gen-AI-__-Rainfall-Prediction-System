@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+    --primary: #3b82f6;
+    --primary-subtle: rgba(59, 130, 246, 0.15);
+    --accent: #8b5cf6;
+    --info: #06b6d4;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg-color: #0b0e14;
+    --sidebar-bg: #12161f;
+    --nav-bg: rgba(18, 22, 31, 0.8);
+    --card-bg: linear-gradient(135deg, rgba(18, 22, 31, 0.7), rgba(30, 41, 59, 0.6));
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --input-bg: #0b0e14;
+}
+
+[data-theme='light'] {
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8fafc;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #475569;
+    --border-color: #cbd5e1;
+    --input-bg: #ffffff;
+    --primary: #2563eb;
+    --accent: #7c3aed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, #root, #wrapper, #page-content-wrapper {
+    background-color: var(--bg-color) !important;
+    color: var(--text-primary);
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+}
+
+#sidebar-wrapper {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    z-index: 50;
+}
+
+nav.navbar {
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Multicolor Animated Card Borders */
+.multicolor-border {
+    position: relative;
+    padding: 1px;
+    border-radius: 1.5rem;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+    background-size: 300% 300%;
+    animation: borderRotate 6s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.glass-card {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+}
+
+[data-theme='light'] .glass-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+/* Antigravity Chrome Map Styling */
+#map-background {
+    transition: opacity 0.8s ease, filter 0.5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+[data-theme='light'] #map-background {
+    filter: invert(1) hue-rotate(180deg) brightness(1.5) opacity(0.1) !important;
+}
+
+.active-map {
+    filter: grayscale(0.2) contrast(1.1);
+    opacity: 0.9 !important;
+}
+
+[data-theme='light'] .active-map {
+    filter: grayscale(0.5) brightness(1.2) !important;
+    opacity: 0.8 !important;
+}
+
+/* Global Overrides */
+input, select {
+    background-color: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.text-white { color: var(--text-primary) !important; }
+.text-slate-400, .text-slate-300, .text-slate-200, .text-slate-100 { color: var(--text-secondary) !important; }
+.bg-\[\#0B0E14\], .bg-darker, .bg-secondary { background-color: var(--bg-color) !important; }
+.border-secondary, .border-cardborder { border-color: var(--border-color) !important; }
+
+[data-theme='light'] h1, [data-theme='light'] h2, [data-theme='light'] h3, [data-theme='light'] h4, [data-theme='light'] h5, [data-theme='light'] .text-white {
+    color: #000000 !important;
+}
+
+.shadow-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.custom-horizontal-scrollbar::-webkit-scrollbar {
+    height: 6px;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+/* Immersive Weather Environments */
+.weather-env-rain {
+    background: linear-gradient(to bottom, #cbd5e1, #94a3b8) !important;
+}
+.weather-env-sun {
+    background: radial-gradient(circle at 10% 10%, #fff7ed 0%, #0b0e14 100%) !important;
+}
+.weather-env-snow {
+    background: linear-gradient(to bottom, #f8fafc, #e2e8f0) !important;
+}
+
+/* Advanced Weather Particles */
+.particle-rain {
+    position: absolute;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8));
+    width: 2px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 1000;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    animation: rain-fall linear infinite;
+}
+
+.particle-snow {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    filter: blur(1px);
+    animation: snow-fall linear infinite;
+}
+
+.particle-sun {
+    position: absolute;
+    background: radial-gradient(circle, rgba(253, 186, 116, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: sun-pulse ease-in-out infinite;
+}
+
+.particle-humid {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+    animation: fog-drift linear infinite;
+}
+
+.particle-cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 1;
+    animation: cloud-drift linear infinite;
+}
+
+@keyframes rain-fall {
+    from { transform: translateY(-100px) rotate(15deg); }
+    to { transform: translateY(110vh) rotate(15deg); }
+}
+
+@keyframes snow-fall {
+    from { transform: translateY(-100px) translateX(-50px); }
+    to { transform: translateY(110vh) translateX(50px); }
+}
+
+@keyframes sun-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes fog-drift {
+    from { transform: translate(-100%, -100%) rotate(0deg); }
+    to { transform: translate(100%, 100%) rotate(360deg); }
+}
+
+@keyframes cloud-drift {
+    from { transform: translateX(-100vw); }
+    to { transform: translateX(100vw); }
+}
+
+/* Light Theme Overrides for Rain/Snow (Only applied in Light Mode) */
+[data-theme='light'][data-weather='rain'] body, [data-theme='light'][data-weather='rain'] #root {
+    background-color: #f1f5f9 !important;
+    color: #1e293b !important;
+}
+[data-theme='light'][data-weather='rain'] .glass-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    color: #1e293b !important;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme='light'][data-weather='snow'] body, [data-theme='light'][data-weather='snow'] #root {
+    background-color: #ffffff !important;
+    color: #334155 !important;
+}
+
+/* Dark Theme Weather Enhancements (Subtle & Remains Dark) */
+[data-theme='dark'][data-weather='rain'] body, [data-theme='dark'][data-weather='rain'] #root {
+    background-color: #080a0f !important; /* Slightly deeper dark for rain */
+}
+[data-theme='dark'][data-weather='snow'] body, [data-theme='dark'][data-weather='snow'] #root {
+    background-color: #0e121a !important; /* Slightly cooler dark for snow */
+}

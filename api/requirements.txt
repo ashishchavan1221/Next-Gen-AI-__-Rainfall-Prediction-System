@@ -1,0 +1,6 @@
+fastapi[standard]
+requests
+pandas
+numpy
+folium
+python-dotenv
