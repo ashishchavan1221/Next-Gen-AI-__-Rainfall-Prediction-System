@@ -11,9 +11,10 @@ from typing import Optional
 app = FastAPI()
 
 from dotenv import load_dotenv
+from pathlib import Path
 
-# Load environment variables from .env file
-load_dotenv()
+# Load environment variables from .env file (relative to this script's location)
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 API_KEY = os.environ.get("OPENWEATHER_API_KEY", "")
 if not API_KEY:
